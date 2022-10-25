@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         payTypes: []
     }
     if (req.method === 'GET') {
-        const { data } = await axios.get('https://api-dolar-argentina.herokuapp.com/api/dolaroficial')
+        const { data } = await axios.get('https://api.bluelytics.com.ar/v2/latest')
         const dataOfBuy = await requestToP2P();
         const dataOfSell = await requestToP2P(options);
         let numberOfBuyAdv = Object.keys(dataOfBuy.data).length;
@@ -44,8 +44,8 @@ export default async function handler(req, res) {
         let average = Number(((averageOfBuy + averageOfSell) / 2).toFixed(4));
         const prices = {
             p2p: average,
-            blueSell: data.venta,
-            blueBuy: data.compra
+            blueSell: data.blue.value_sell,
+            blueBuy: data.blue.value_buy
         }
         res.status(200).json(prices)
     }

@@ -32,7 +32,7 @@ export default function Home() {
     return () => clearInterval(cron)
   }, [])
 
-  if (value === 0) {
+  if (value.p2p === 0) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
         <CircularProgress />
