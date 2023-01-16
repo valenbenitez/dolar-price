@@ -7,7 +7,7 @@ async function requestToP2P(options = {
     asset: 'USDT',
     tradeType: 'BUY',
     fiat: 'ARS',
-    payTypes: [],
+    payTypes: ["BANK"],
 }) {
     const { data } = await axios.post('https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search', options, { headers: { 'Content-Type': 'application/json' } })
     return data
